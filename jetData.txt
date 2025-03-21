@@ -1,0 +1,7 @@
+P|Gulfstream G5|560|1399|2000000000
+F|Supermarine Spitfire|480.0|1200|90000
+C|Lockheed C130|400.0|2400|12000000
+F|McDonnell Douglas F-15E Strike Eagle|1875|2400|87000000
+P|Dassault Falcon 7X|594|5950|54000000
+C|Lockheed C-130 Hercules|400|2360|30000000
+C|Boeing C-17 Globemaster III|518|2800|340000000

@@ -6,10 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.skilldistillery.jets.entities.CargoCarrier;
+import com.skilldistillery.jets.entities.CargoJet;
+import com.skilldistillery.jets.entities.CombatReady;
+import com.skilldistillery.jets.entities.FighterJet;
 import com.skilldistillery.jets.entities.Jet;
 import com.skilldistillery.jets.entities.VanillaJet;
-import com.skilldistillery.jets.entities.CargoJet;
-import com.skilldistillery.jets.entities.FighterJet;
 
 public class AirField {
 	private List<Jet> fleet = new ArrayList<>();
@@ -64,6 +66,22 @@ public class AirField {
 		System.out.println("----------Furthest Range----------");
 		System.out.println(" ");
 		System.out.println("----------------------------------");
+	}
+	
+	public void dogFight() {
+		for (Jet jet : fleet) {
+			if ( jet instanceof CombatReady) {
+				((FighterJet) jet).flight();
+			}
+		}
+	}
+	
+	public void loadCargo() {
+		for (Jet jet : fleet) {
+			if ( jet instanceof CargoCarrier) {
+				((CargoCarrier) jet).loadCargo();
+			}
+		}
 	}
 
 	public void loadJetsFromFile(String fileName) {

@@ -37,8 +37,10 @@ public class JetsApp {
 				airField.loadJetsFromFile("jetData.txt");
 				break;
 			case "5":
+				airField.loadCargo();
 				break;
 			case "6":
+				airField.dogFight();
 				break;
 			case "7":
 				break;

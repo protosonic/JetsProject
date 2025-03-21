@@ -20,6 +20,28 @@ public class AirField {
 //		// load 5 jets here
 //		loadJetsFromFile("jetData.txt");
 //	}
+	public void addVanilla(String model, double speedMph, int range, int price) {
+		Jet newJet = new VanillaJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+	
+	public void addFighter(String model, double speedMph, int range, int price) {
+		Jet newJet = new FighterJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+	public void addCargo(String model, double speedMph, int range, int price) {
+		Jet newJet = new CargoJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+	
+	public void removeJet(int jetIndex) {
+		if (jetIndex >= fleet.size() || jetIndex < 0){
+			System.out.println("Invalid index selected");
+		} else {
+			fleet.remove(jetIndex);
+		}
+		
+	}
 	
 	public void displayFleet() {
 		for (Jet jet : fleet) {

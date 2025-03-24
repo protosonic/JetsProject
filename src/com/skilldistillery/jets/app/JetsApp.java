@@ -57,6 +57,7 @@ public class JetsApp {
 				// Print get jet type submenu
 				System.out.println("Enter the type of Jet from the list below:" + "\n1). Passenger Jet"
 						+ "\n2). Fighter Jet" + "\n3). Cargo Jet");
+				System.out.println();
 				int jetType = scanner.nextInt();
 				switch (jetType) {
 				case 1:
@@ -68,23 +69,24 @@ public class JetsApp {
 				case 3:
 					airField.addCargo(model, speedMph, range, price);
 					break;
-				}
+				default: System.out.println("Invalid Model selection. No jet has been added");
+				} // There's a bug here that prints the user jet info even if no jet is added
 				System.out.println("Jet with type: " + jetType + "\nModel: " + model + "\nMax SPeed: " + speedMph
 						+ "\nRange: " + range + "\nPrice: " + price + "\nHas been added");
 				break;
 			case "8":
-				int removeIndex = 0;
-				removeIndex = scanner.nextInt();
+				airField.displayFleet();
+				System.out.println("Select the index [] of the jet you would like to remove:");
+			int removeIndex = scanner.nextInt();
 				airField.removeJet(removeIndex);
 				break;
 			case "9":
 				keepGoing = false;
 				break;
-			
-			default: System.out.println("Invalid selection!");
+//			default: System.out.println("Invalid selection!");
 			}
 
-		} while (keepGoing = true);
+		} while (keepGoing);
 
 	}
 

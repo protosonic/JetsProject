@@ -69,7 +69,7 @@ public class AirField {
 
 	public void removeJet(int jetIndex) {
 		if (jetIndex >= fleet.size() || jetIndex < 0) {
-			System.out.println("Invalid index selected");
+			System.out.println(fleet.size());
 		} else {
 			System.out.println("Jet at " + jetIndex + " has successfully been removed");
 			fleet.remove(jetIndex);
@@ -79,8 +79,10 @@ public class AirField {
 
 	public void displayFleet() {
 		System.out.println("----------Fleet List----------");
+		int count = 0;
 		for (Jet jet : fleet) {
-			System.out.println(jet);
+			System.out.println("[" + count + "]: "+ jet);
+			count++;
 		}
 		System.out.println("------------------------------");
 	}

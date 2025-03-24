@@ -15,117 +15,35 @@ import com.skilldistillery.jets.entities.VanillaJet;
 
 public class AirField {
 	private List<Jet> fleet = new ArrayList<>();
-
-//	public AirField() {
-//		// load 5 jets here
-//		loadJetsFromFile("jetData.txt");
-//	}
-	public void addVanilla(String model, double speedMph, int range, int price) {
-		Jet newJet = new VanillaJet(model, speedMph, range, price);
-		fleet.add(newJet);
-	}
 	
-	public void addFighter(String model, double speedMph, int range, int price) {
-		Jet newJet = new FighterJet(model, speedMph, range, price);
-		fleet.add(newJet);
-	}
-	public void addCargo(String model, double speedMph, int range, int price) {
-		Jet newJet = new CargoJet(model, speedMph, range, price);
-		fleet.add(newJet);
-	}
-	
-	public void removeJet(int jetIndex) {
-		if (jetIndex >= fleet.size() || jetIndex < 0){
-			System.out.println("Invalid index selected");
-		} else {
-			fleet.remove(jetIndex);
-		}
-		
-	}
-	
-	public void displayFleet() {
-		for (Jet jet : fleet) {
-			System.out.println(jet);
-		}
-		System.out.println("----------Fleet List----------");
-		System.out.println(" ");
-		System.out.println("------------------------------");
-	}
-	
-	public void flyFleet() {
-		for (Jet jet : fleet) {
-			System.out.println("__________WOOOOSH!__________");
-			jet.fly();
-			System.out.println("____________________________");
-		}
-	}
-	
-	public void findFastest() {
-		double fastestSpeed = 0.0;
-		Jet fastestJet = null;
-		for (Jet jet : fleet) {
-			if (jet.getSpeedMph() > fastestSpeed) {
-				fastestSpeed = jet.getSpeedMph();
-				fastestJet = jet;
-			}
-		}
-
-		System.out.println("----------Fastest Speed----------");
-		System.out.println(" ");
-		System.out.println("---------------------------------");
-	}
-	
-	public void findFarthest() {
-		double furthestRange = 0.0;
-		Jet furthestJet = null;
-		for (Jet jet : fleet) {
-			if (jet.getRange() > furthestRange) {
-				furthestRange = jet.getRange();
-				furthestJet = jet;
-			}
-		}
-
-		System.out.println("----------Furthest Range----------");
-		System.out.println(" ");
-		System.out.println("----------------------------------");
-	}
-	
-	public void dogFight() {
-		for (Jet jet : fleet) {
-			if ( jet instanceof CombatReady) {
-				((FighterJet) jet).flight();
-			}
-		}
-	}
-	
-	public void loadCargo() {
-		for (Jet jet : fleet) {
-			if ( jet instanceof CargoCarrier) {
-				((CargoCarrier) jet).loadCargo();
-			}
-		}
+	public AirField() {
+	loadJetsFromFile("jetData.txt");
 	}
 
 	public void loadJetsFromFile(String fileName) {
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
-				System.out.println(line);
+//				System.out.println(line);
 
 				String[] fields = line.split("[|]");
 				String model = fields[1];
 				double speedMph = Double.parseDouble(fields[2]);
 				int range = Integer.parseInt(fields[3]);
 				int price = Integer.parseInt(fields[4]);
+				
 				switch (fields[0]) {
 				case "P":
 					VanillaJet vJet = new VanillaJet(model, speedMph, range, price);
+					fleet.add(vJet);
 					break;
 				case "F":
 					FighterJet fJet = new FighterJet(model, speedMph, range, price);
+					fleet.add(fJet);
 					break;
 				case "C":
 					CargoJet jJet = new CargoJet(model, speedMph, range, price);
+					fleet.add(jJet);
 					break;
 				}
 
@@ -134,4 +52,120 @@ public class AirField {
 			System.err.println(e);
 		}
 	}
+	
+	public void addVanilla(String model, double speedMph, int range, int price) {
+		Jet newJet = new VanillaJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+
+	public void addFighter(String model, double speedMph, int range, int price) {
+		Jet newJet = new FighterJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+
+	public void addCargo(String model, double speedMph, int range, int price) {
+		Jet newJet = new CargoJet(model, speedMph, range, price);
+		fleet.add(newJet);
+	}
+
+	public void removeJet(int jetIndex) {
+		if (jetIndex >= fleet.size() || jetIndex < 0) {
+			System.out.println("Invalid index selected");
+		} else {
+			System.out.println("Jet at " + jetIndex + " has successfully been removed");
+			fleet.remove(jetIndex);
+		}
+
+	}
+
+	public void displayFleet() {
+		System.out.println("----------Fleet List----------");
+		for (Jet jet : fleet) {
+			System.out.println(jet);
+		}
+		System.out.println("------------------------------");
+	}
+
+	public void flyFleet() {
+		for (Jet jet : fleet) {
+			System.out.println("__________WOOOOSH!__________");
+			jet.fly();
+			System.out.println("____________________________");
+		}
+	}
+
+	public void findFastest() {
+		Jet fastestJet = fleet.get(2);
+		for (Jet jet : fleet) {
+			if (jet.getSpeedMph() > fastestJet.getSpeedMph()) {
+				fastestJet = jet;
+			}
+		}
+
+		System.out.println("----------Fastest Speed----------");
+		System.out.println(fastestJet);
+		System.out.println("---------------------------------");
+	}
+
+	public void findFurthest() {
+		Jet furthestJet = fleet.get(3);
+		for (Jet jet : fleet) {
+			if (jet.getRange() > furthestJet.getRange()) {
+				furthestJet = jet;
+			
+		System.out.println("----------Furthest Range----------");
+		System.out.println(furthestJet);
+		System.out.println("----------------------------------");
+		}
+		}
+	}
+
+	public void dogFight() {
+		for (Jet jet : fleet) {
+			if (jet instanceof CombatReady) {
+				((CombatReady) jet).fight();
+			}
+		}
+	}
+
+	public void loadCargo() {
+		for (Jet jet : fleet) {
+			if (jet instanceof CargoCarrier) {
+				((CargoCarrier) jet).loadCargo();
+			}
+		}
+	}
+
+//	public void loadJetsFromFile(String fileName) {
+//		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
+//			String line;
+//			while ((line = bufIn.readLine()) != null) {
+////				System.out.println(line);
+//
+//				String[] fields = line.split("[|]");
+//				String model = fields[1];
+//				double speedMph = Double.parseDouble(fields[2]);
+//				int range = Integer.parseInt(fields[3]);
+//				int price = Integer.parseInt(fields[4]);
+//				
+//				switch (fields[0]) {
+//				case "P":
+//					VanillaJet vJet = new VanillaJet(model, speedMph, range, price);
+//					fleet.add(vJet);
+//					break;
+//				case "F":
+//					FighterJet fJet = new FighterJet(model, speedMph, range, price);
+//					fleet.add(fJet);
+//					break;
+//				case "C":
+//					CargoJet jJet = new CargoJet(model, speedMph, range, price);
+//					fleet.add(jJet);
+//					break;
+//				}
+//
+//			}
+//		} catch (IOException e) {
+//			System.err.println(e);
+//		}
+//	}
 }

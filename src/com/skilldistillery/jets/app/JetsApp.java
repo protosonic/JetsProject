@@ -3,8 +3,6 @@ package com.skilldistillery.jets.app;
 import java.util.Scanner;
 
 public class JetsApp {
-	// NO jet collection in app class
-	// ONLY in Airfield
 
 	private AirField airField = new AirField();
 	private static Scanner scanner;
@@ -34,7 +32,7 @@ public class JetsApp {
 				airField.findFastest();
 				break;
 			case "4":
-				airField.loadJetsFromFile("jetData.txt");
+				airField.findFurthest();
 				break;
 			case "5":
 				airField.loadCargo();
@@ -43,21 +41,38 @@ public class JetsApp {
 				airField.dogFight();
 				break;
 			case "7":
+									// Print get jets stats submenu
+				String model = scanner.nextLine();
+				double speedMph = scanner.nextDouble();
+				int range = scanner.nextInt();
+				int price = scanner.nextInt();
+
+									// Print get jet type submenu
+				int jetType = scanner.nextInt();
+				switch (jetType) {
+				case 1:
+					airField.addVanilla(model, speedMph, range, price);
+					break;
+				case 2:
+					airField.addFighter(model, speedMph, range, price);
+					break;
+				case 3:
+					airField.addCargo(model, speedMph, range, price);
+				}
 				break;
 			case "8":
+				int removeIndex = 0;
+				removeIndex = scanner.nextInt();
+				airField.removeJet(removeIndex);
 				break;
 			case "9":
+				keepGoing = false;
 				break;
-
 			}
 			break;
 
 		} while (keepGoing);
-		// do-while loop
-		// *print menu (make new sysout method to call)
-		// *get user choice
-		// *switch on user choice
-		// * call on Airfield method to act on user choice
+
 	}
 
 	private void displayUserMenu() {

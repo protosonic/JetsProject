@@ -24,7 +24,6 @@ public class AirField {
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String line;
 			while ((line = bufIn.readLine()) != null) {
-//				System.out.println(line);
 
 				String[] fields = line.split("[|]");
 				String model = fields[1];
@@ -135,37 +134,4 @@ public class AirField {
 			}
 		}
 	}
-
-//	public void loadJetsFromFile(String fileName) {
-//		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
-//			String line;
-//			while ((line = bufIn.readLine()) != null) {
-////				System.out.println(line);
-//
-//				String[] fields = line.split("[|]");
-//				String model = fields[1];
-//				double speedMph = Double.parseDouble(fields[2]);
-//				int range = Integer.parseInt(fields[3]);
-//				int price = Integer.parseInt(fields[4]);
-//				
-//				switch (fields[0]) {
-//				case "P":
-//					VanillaJet vJet = new VanillaJet(model, speedMph, range, price);
-//					fleet.add(vJet);
-//					break;
-//				case "F":
-//					FighterJet fJet = new FighterJet(model, speedMph, range, price);
-//					fleet.add(fJet);
-//					break;
-//				case "C":
-//					CargoJet jJet = new CargoJet(model, speedMph, range, price);
-//					fleet.add(jJet);
-//					break;
-//				}
-//
-//			}
-//		} catch (IOException e) {
-//			System.err.println(e);
-//		}
-//	}
 }

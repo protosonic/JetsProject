@@ -41,13 +41,22 @@ public class JetsApp {
 				airField.dogFight();
 				break;
 			case "7":
-									// Print get jets stats submenu
+				// Print get jets stats submenu
+				System.out.println("Enter Model: ");
 				String model = scanner.nextLine();
+				System.out.println();
+				System.out.println("Enter Max Speed: ");
 				double speedMph = scanner.nextDouble();
+				System.out.println();
+				System.out.println("Enter Max Range: ");
 				int range = scanner.nextInt();
+				System.out.println();
+				System.out.println("Enter Price: ");
 				int price = scanner.nextInt();
 
-									// Print get jet type submenu
+				// Print get jet type submenu
+				System.out.println("Enter the type of Jet from the list below:" + "\n1). Passenger Jet"
+						+ "\n2). Fighter Jet" + "\n3). Cargo Jet");
 				int jetType = scanner.nextInt();
 				switch (jetType) {
 				case 1:
@@ -58,7 +67,10 @@ public class JetsApp {
 					break;
 				case 3:
 					airField.addCargo(model, speedMph, range, price);
+					break;
 				}
+				System.out.println("Jet with type: " + jetType + "\nModel: " + model + "\nMax SPeed: " + speedMph
+						+ "\nRange: " + range + "\nPrice: " + price + "\nHas been added");
 				break;
 			case "8":
 				int removeIndex = 0;
@@ -68,10 +80,11 @@ public class JetsApp {
 			case "9":
 				keepGoing = false;
 				break;
+			
+			default: System.out.println("Invalid selection!");
 			}
-			break;
 
-		} while (keepGoing);
+		} while (keepGoing = true);
 
 	}
 
@@ -84,7 +97,8 @@ public class JetsApp {
 		System.out.println("5). Load all Cargo Jets");
 		System.out.println("6). Dogfight!");
 		System.out.println("7). Add jet to fleet");
-		System.out.println("8). Remove jet from fleet ");
+		System.out.println("8). Remove jet from fleet");
+		System.out.println("9). Quit");
 		System.out.println("----------------------------");
 	}
 }

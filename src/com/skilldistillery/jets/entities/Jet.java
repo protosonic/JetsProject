@@ -41,15 +41,15 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet [model=");
-		builder.append(model);
-		builder.append(", speedMph=");
-		builder.append(speedMph);
-		builder.append(", range=");
-		builder.append(range);
-		builder.append(", price=");
-		builder.append(price);
-		builder.append("]");
+		builder.append("\nModel: ");
+		builder.append(model + "\n");
+		builder.append("SpeedMph: ");
+		builder.append(speedMph+ "\n");
+		builder.append("Range: ");
+		builder.append(range + "\n");
+		builder.append("Price: ");
+		builder.append(price + "\n");
+		builder.append("-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
 		return builder.toString();
 	}
 
@@ -62,14 +62,13 @@ public abstract class Jet {
 	}
 
 	public void fly() {
-		int flightTime = (int) ((speedMph) / range);
+		double flightTime = range / speedMph;
 		System.out.println("Initiating take off...." + 
 		"\nModel: " + model + "\nSpeed: " + speedMph + 
 		"\nRange: " + range + "\nPrice" + price
 				+ "\nMax Flight time: " + flightTime);
 	}
 	public double getSpeedInMAch() {
-		//TODO convert from speedMph
-		return 0.0;
+		return speedMph /767.269;
 	}
 }

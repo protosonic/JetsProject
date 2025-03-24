@@ -15,7 +15,6 @@ public class JetsApp {
 	}
 
 	private void launch() {
-		// TODO Create an airfield
 		boolean keepGoing = true;
 		do {
 			displayUserMenu();
@@ -41,24 +40,31 @@ public class JetsApp {
 				airField.dogFight();
 				break;
 			case "7":
-				// Print get jets stats submenu
+				// Getting jet information menu
 				System.out.println("Enter Model: ");
+				System.out.println();
 				String model = scanner.nextLine();
-				System.out.println();
+
 				System.out.println("Enter Max Speed: ");
+				System.out.println();
 				double speedMph = scanner.nextDouble();
-				System.out.println();
+
 				System.out.println("Enter Max Range: ");
-				int range = scanner.nextInt();
 				System.out.println();
+				int range = scanner.nextInt();
+
 				System.out.println("Enter Price: ");
+				System.out.println();
 				int price = scanner.nextInt();
 
-				// Print get jet type submenu
-				System.out.println("Enter the type of Jet from the list below:" + "\n1). Passenger Jet"
-						+ "\n2). Fighter Jet" + "\n3). Cargo Jet");
+				// Getting jet type sub-menu 
+				System.out.println("Enter the type of Jet from the list below:"
+				+ "\n1). Passenger Jet"
+				+ "\n2). Fighter Jet" 
+				+ "\n3). Cargo Jet");
 				System.out.println();
 				int jetType = scanner.nextInt();
+
 				switch (jetType) {
 				case 1:
 					airField.addVanilla(model, speedMph, range, price);
@@ -69,7 +75,8 @@ public class JetsApp {
 				case 3:
 					airField.addCargo(model, speedMph, range, price);
 					break;
-				default: System.out.println("Invalid Model selection. No jet has been added");
+				default:
+					System.out.println("Invalid Model selection. No jet has been added");
 				} // There's a bug here that prints the user jet info even if no jet is added
 				System.out.println("Jet with type: " + jetType + "\nModel: " + model + "\nMax SPeed: " + speedMph
 						+ "\nRange: " + range + "\nPrice: " + price + "\nHas been added");
@@ -77,7 +84,7 @@ public class JetsApp {
 			case "8":
 				airField.displayFleet();
 				System.out.println("Select the index [] of the jet you would like to remove:");
-			int removeIndex = scanner.nextInt();
+				int removeIndex = scanner.nextInt();
 				airField.removeJet(removeIndex);
 				break;
 			case "9":

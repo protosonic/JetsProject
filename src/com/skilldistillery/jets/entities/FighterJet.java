@@ -9,7 +9,16 @@ public class FighterJet extends Jet implements CombatReady {
 	@Override
 	public void fight() {
 		System.out.println("========================================");
-		System.out.println("\t\t" + getModel() + "\n-Weapons ready;\n-Scanning for target....;\n-Target aquired;\n-Engaging target;\n-Deploying ordinance;\n-Splash, splash, splash!;\n-Target nutralized;\n-Returning to base;");
+		System.out.println("\t\t" + getModel() + ""
+				+ "\n-Weapons ready;"
+				+ "\n-Scanning for target....;"
+				+ "\n-Target aquired;"
+				+ "\n-Engaging target;"
+				+ "\n-Deploying ordinance;"
+				+ "\n-Splash, splash, splash!;"
+				+ "\n-Target nutralized;"
+				+ "\n-Returning to base;"
+				+ "\n\t\t" + getModel() + ": Returned to base");
 	}
 
 }
